@@ -139,23 +139,36 @@ public final class IslandViewModel: ObservableObject {
     }
 
     public func calculateDimensions(for mode: IslandMode, notch: NotchInfo) -> (width: CGFloat, height: CGFloat, cornerRadius: CGFloat) {
+        let notchH = notch.hasPhysicalNotch ? notch.notchRect.height : 32
+        let notchW = notch.hasPhysicalNotch ? notch.notchRect.width : 180
+
         switch mode {
         case .idle:
             if notch.hasPhysicalNotch {
-                return (notch.notchRect.width, notch.notchRect.height, notch.cornerRadius)
+                return (notchW, notchH, notch.cornerRadius)
             } else {
                 return (180, 32, 16)
             }
         case .compactMedia:
             if notch.hasPhysicalNotch {
-                return (notch.notchRect.width + 64, notch.notchRect.height + 4, 14)
+                // Wings extending 42pt on each side of the physical notch
+                return (notchW + 84, notchH + 4, 14)
             } else {
                 return (220, 34, 17)
             }
         case .hud:
-            return (240, 36, 18)
+            if notch.hasPhysicalNotch {
+                return (max(notchW + 80, 270), notchH + 38, 18)
+            } else {
+                return (240, 36, 18)
+            }
         case .expandedMedia:
-            return (380, 160, 26)
+            if notch.hasPhysicalNotch {
+                // Height must include notchH so all media content is pushed below the camera
+                return (400, notchH + 160, 26)
+            } else {
+                return (380, 160, 26)
+            }
         }
     }
 }

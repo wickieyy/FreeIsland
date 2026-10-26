@@ -50,7 +50,8 @@ public struct IslandMorphView: View {
                     case .compactMedia:
                         CompactMediaView(
                             item: mediaService.currentTrack,
-                            isPhysicalNotch: notch.hasPhysicalNotch
+                            isPhysicalNotch: notch.hasPhysicalNotch,
+                            notchWidth: notch.notchRect.width
                         )
                         .transition(.opacity.combined(with: .scale(scale: 0.95)))
 
@@ -69,6 +70,7 @@ public struct IslandMorphView: View {
                                 BatteryHUDView(percentage: percentage, isCharging: isCharging)
                             }
                         }
+                        .padding(.top, notch.hasPhysicalNotch ? notch.notchRect.height : 0)
                         .transition(.opacity.combined(with: .scale(scale: 0.9)))
                     }
                 }

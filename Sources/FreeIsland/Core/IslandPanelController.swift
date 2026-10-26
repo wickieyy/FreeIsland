@@ -11,7 +11,7 @@ public final class IslandPanelController: ObservableObject {
 
     // Fixed generous frame dimensions for zero-jitter rendering
     private let overlayWidth: CGFloat = 460
-    private let overlayHeight: CGFloat = 220
+    private let overlayHeight: CGFloat = 280
 
     public init() {}
 

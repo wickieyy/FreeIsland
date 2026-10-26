@@ -3,9 +3,12 @@ import AppKit
 
 public struct ExpandedMediaView: View {
     @ObservedObject var mediaService = MediaService.shared
+    @ObservedObject var geometryEngine = NotchGeometryEngine.shared
 
     public var body: some View {
         let track = mediaService.currentTrack
+        let notch = geometryEngine.currentNotch
+        let topPadding: CGFloat = notch.hasPhysicalNotch ? (notch.notchRect.height + 8) : 14
 
         VStack(spacing: 12) {
             // Header: Album Artwork, Title, Artist, Source
@@ -33,11 +36,11 @@ public struct ExpandedMediaView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     MarqueeText(
                         track.title.isEmpty ? "Not Playing" : track.title,
-                        font: .system(size: 14, weight: .bold)
+                        font: .system(size: 15, weight: .bold)
                     )
 
                     Text(track.artist.isEmpty ? "Open Music or Spotify" : track.artist)
-                        .font(.system(size: 12, weight: .medium))
+                        .font(.system(size: 13, weight: .medium))
                         .foregroundColor(.white.opacity(0.7))
                         .lineLimit(1)
 
@@ -134,6 +137,7 @@ public struct ExpandedMediaView: View {
             .padding(.top, 2)
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 14)
+        .padding(.top, topPadding)
+        .padding(.bottom, 14)
     }
 }
