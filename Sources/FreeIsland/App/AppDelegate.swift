@@ -5,15 +5,20 @@ public final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem?
 
     public func applicationDidFinishLaunching(_ notification: Notification) {
-        // Prevent app from quitting when windows close
+        // Run as accessory overlay without stealing focus or appearing in Dock
         NSApp.setActivationPolicy(.accessory)
 
-        // Initialize Notch and Island Panel
+        // Initialize Notch Geometry and Island Panel
         NotchGeometryEngine.shared.updateGeometry()
         IslandPanelController.shared.setup()
 
         // Initialize Media Remote tracking
         MediaService.shared.startObserving()
+
+        // Initialize Phase 2 System HUD Observers (Audio, Brightness, MagSafe Power)
+        _ = AudioHUDService.shared
+        _ = BrightnessHUDService.shared
+        _ = PowerService.shared
 
         // Setup Menu Bar Extra
         setupStatusItem()
@@ -94,12 +99,10 @@ public final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func toggleIslandExpansion() {
         let vm = IslandViewModel.shared
-        withAnimation(.spring(response: 0.35, dampingFraction: 0.72)) {
-            if vm.state == .expanded {
-                vm.state = MediaService.shared.hasActiveMedia ? .compact : .idle
-            } else {
-                vm.state = .expanded
-            }
+        if vm.isExpanded {
+            vm.onMouseExit()
+        } else {
+            vm.onMouseEnter()
         }
     }
 

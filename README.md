@@ -94,10 +94,11 @@ FreeIsland/
   - [x] SwiftUI morphing container with hover expansion & hysteresis
   - [x] Spotify, Apple Music & Universal MediaRemote playback controls
   - [x] Discrete menu bar status item
-- [ ] **Phase 2: System HUDs**
-  - [ ] Sleek replacement for Volume and Brightness HUDs
-  - [ ] MagSafe charging connect popups and battery percentage
-  - [ ] AirPods connection indicators
+- [x] **Phase 2: System HUDs & Animation Architecture Fix**
+  - [x] Zero-jitter fixed overlay architecture with custom passthrough hit-testing
+  - [x] Modern replacement for macOS Volume HUD (CoreAudio integration)
+  - [x] Display Brightness HUD (DisplayServices private API integration)
+  - [x] MagSafe charger connection popup & battery percentage (IOKit integration)
 - [ ] **Phase 3: Productivity Utilities**
   - [ ] "Notch Drop": Drag-and-drop file shelf and quick AirDrop target
   - [ ] Live countdown timer / Pomodoro pill
