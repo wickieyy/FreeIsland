@@ -1,0 +1,9 @@
+.build/
+.swiftpm/
+Packages/
+*.xcodeproj
+*.xcworkspace
+FreeIsland.app
+.DS_Store
+*.swp
+*~
