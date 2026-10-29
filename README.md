@@ -58,7 +58,7 @@
 Clone the repository and run the build script:
 
 ```bash
-git clone https://github.com/<YOUR-USERNAME>/FreeIsland.git
+git clone https://github.com/wickieyy/FreeIsland.git
 cd FreeIsland
 ./scripts/build_app.sh release
 ```
