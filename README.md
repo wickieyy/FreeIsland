@@ -4,7 +4,6 @@
 
 [![Platform](https://img.shields.io/badge/macOS-13.0%2B-black?logo=apple)](https://www.apple.com/macos/)
 [![Swift](https://img.shields.io/badge/Swift-6.0%20%7C%205.9-orange?logo=swift)](https://swift.org)
-[![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg)](LICENSE)
 
 ---
 
@@ -78,11 +77,3 @@ FreeIsland runs as an accessory menu bar application (`LSUIElement = true`):
 - **`⌘P`**: Pin the media player to keep it open
 - **`⌘R`**: Force refresh media status
 - **`⌘Q`**: Quit FreeIsland
-
----
-
-## 📄 License & Copyright
-
-**Copyright (c) 2026. All Rights Reserved.**
-
-This repository is publicly accessible for personal evaluation, review, and reference. No permission is granted to copy, redistribute, modify, create derivative works, or use this software for commercial purposes without prior written authorization. See [`LICENSE`](LICENSE) for details.
